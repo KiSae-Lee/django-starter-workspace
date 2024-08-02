@@ -3,3 +3,6 @@
   - Setup python virtual environment generating script for Windows.
   - Setup flake8.
   - Freeze dependencies.
+  - Initialize Django. 
+    - Add gitignore.
+    - Freeze dependencies.
