@@ -6,3 +6,6 @@
   - Initialize Django. 
     - Add gitignore.
     - Freeze dependencies.
+- 2024-8-6:
+  - Add Django Restful Framework(DRF) and add test code. -> Ready for containerization.
+  - Add httpie for test. -> Freeze
