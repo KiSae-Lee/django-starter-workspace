@@ -27,4 +27,5 @@ router.register(r"users", views.UserAPI)
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/", include(router.urls)),
+    path("clip_video/", include("media.urls")),
 ]

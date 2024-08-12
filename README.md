@@ -9,3 +9,10 @@
 - 2024-8-6:
   - Add Django Restful Framework(DRF) and add test code. -> Ready for containerization.
   - Add httpie for test. -> Freeze
+- 2024-8-12:
+  - Install Redis. (Default port is 6379. Install path: `C:\Program Files\Redis`)
+    - Installation file link: `https://github.com/microsoftarchive/redis/releases`
+  - Install celery. (`python -m pip install -U celery[redis]`)
+  - Install moviepy. (Just for the test)
+  - Install gevent. (To run celery in Windows)
+  - Add `scripts/windows/run-celery.bat`. Run this in another terminal to make sure Radis task broker is online.
