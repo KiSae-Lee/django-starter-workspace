@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.conf import settings
+import os
+import math
 
 # Create your views here.
 from rest_framework.response import Response
@@ -15,10 +18,17 @@ class Clip_Video_API(APIView):
 
         try:
             data = request.data
-            media_dir = "C:/test/"
-            video_file_path = media_dir + data["video_file"]
-            clip_path = media_dir + data["clip_name"]
+            print(data)
+            media_dir = os.path.abspath(
+                os.path.join(settings.BASE_DIR, "..", "..", "temp")
+            )
+
+            print(f"Media: {media_dir}")
+            video_file_path = os.path.join(media_dir, data["video_file"])
+            clip_path = os.path.join(media_dir, data["clip_name"])
+
             clip_video.delay(video_file_path, data, clip_path)
+
             data, st, msg = clip_path, 200, "Video clipped successfully"
         except Exception as error:
             print(error)

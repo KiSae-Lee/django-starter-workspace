@@ -1,18 +1,21 @@
-# Update notes
-- 2024-8-2: 
-  - Setup python virtual environment generating script for Windows.
-  - Setup flake8.
-  - Freeze dependencies.
-  - Initialize Django. 
-    - Add gitignore.
-    - Freeze dependencies.
-- 2024-8-6:
-  - Add Django Restful Framework(DRF) and add test code. -> Ready for containerization.
-  - Add httpie for test. -> Freeze
-- 2024-8-12:
-  - Install Redis. (Default port is 6379. Install path: `C:\Program Files\Redis`)
-    - Installation file link: `https://github.com/microsoftarchive/redis/releases`
-  - Install celery. (`python -m pip install -U celery[redis]`)
-  - Install moviepy. (Just for the test)
-  - Install gevent. (To run celery in Windows)
-  - Add `scripts/windows/run-celery.bat`. Run this in another terminal to make sure Radis task broker is online.
+# Preparation
+1. `python -m venv .venv` to create virtual environment.
+2. `./.venv/Scripts/activate` to activate virtual environment.
+3. `python -m pip install -r requirement.txt` to install packages.
+4. Install `redis`. `redis` for windows: https://github.com/microsoftarchive/redis/releases (You can use docker if you want)
+
+# Server
+1. `./scripts/windows/run.bat` to run django server.
+2. `./scripts/windows/run-celery.bat` to run celery in another terminal. (Make sure redis is online)
+
+# Celery test
+1. `POST` http://localhost:8000/clip_video. Body example:
+  ``` json
+    {
+      "video_file": "test_video.mp4",
+      "clip_name": "clipped.mp4",
+      "start_time": "00:00:00",
+      "end_time": "00:00:10"
+    }
+   ```
+2. This example function will find a file in `temp` folder.
